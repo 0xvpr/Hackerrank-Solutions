@@ -1,0 +1,13 @@
+# Compiled Objects
+*.a
+*.o
+*.so
+*.dll
+*.lib
+*.obj
+*.exe
+*.out
+
+# Directories
+bin/**
+lib/**
