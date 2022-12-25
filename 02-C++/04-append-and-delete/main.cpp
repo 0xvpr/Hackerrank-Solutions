@@ -1,13 +1,11 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <map>
 
 int main() {
     std::ios::sync_with_stdio(true);
 
-    std::string a{}, b{};
     int limit = 0;
+    std::string a{}, b{};
     std::cin >> a >> b >> limit;
 
     if (a == b) {
