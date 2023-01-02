@@ -32,12 +32,12 @@ struct Node {
 
 class Cache {
 protected: 
-    map_t mp; //map the key to the node in the linked list
-    int cp;  //capacity
-    Node* tail; // double linked list tail pointer
-    Node* head; // double linked list head pointer
-    virtual void set(int, int) = 0; //set function
-    virtual int get(int) = 0; //get function
+    map_t  mp;                      // map the key to the node in the linked list
+    int    cp;                      // capacity
+    node_t tail;                    // double linked list tail pointer
+    node_t head;                    // double linked list head pointer
+    virtual void set(int, int) = 0; // set function
+    virtual int get(int) = 0;       // get function
 
 };
 
@@ -48,14 +48,13 @@ public:
         , head(nullptr)
         , tail(nullptr)
     {
-        
     }
     ~LRUCache()
     {
     }
     void set(int key, int value) noexcept {
         if (!mp.count(key)) {
-            auto node = std::make_shared<Node>( Node(key, value) );
+            auto node = std::make_shared<Node>(Node(key, value));
             node->next = nullptr;
             node->prev = head;
 
@@ -83,11 +82,11 @@ public:
                 tail = node->next;
             }
 
-            node->prev = head;
-            node->next = nullptr;
-            head->next = node;
+            node->prev  = head;
+            node->next  = nullptr;
+            head->next  = node;
             node->value = value;
-            head = node;
+            head        = node;
         }
     }
     [[nodiscard]] int get(int key) noexcept {
